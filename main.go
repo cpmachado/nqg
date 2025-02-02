@@ -53,7 +53,7 @@ func init() {
 func main() {
 	defer out.Close()
 	pos := make([]int, n)
-	snq.Snq(out, pos, 0)
+	snq.SNQ(out, pos, 0)
 }
 
 // printVersion Prints the version command

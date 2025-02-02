@@ -6,8 +6,8 @@ import (
 	"strings"
 )
 
-// Snq implements the original Simple N-Queen puzzle solver
-func Snq(w io.Writer, pos []int, k int) {
+// SNQ implements the original Simple N-Queen puzzle solver
+func SNQ(w io.Writer, pos []int, k int) {
 	if k == len(pos) {
 		printPosition(w, pos)
 		return
@@ -17,7 +17,7 @@ func Snq(w io.Writer, pos []int, k int) {
 	for i := 0; i < n; i++ {
 		pos[k] = i
 		if isValidPosition(pos, k) {
-			Snq(w, pos, k+1)
+			SNQ(w, pos, k+1)
 		}
 	}
 }
