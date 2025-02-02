@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"log"
 	"os"
+
+	"go.cpmachado.pt/nqg/snq"
 )
 
 const (
@@ -14,10 +16,9 @@ const (
 	DefaultOutputFile = ""
 )
 
-// Version holds the version of the current software based on compilation
-
 var (
-	Version string = "unknown"
+	// Version holds the version of the current software based on compilation
+	Version string = "1.0.0"
 	n       int
 	v       bool
 	out     *os.File
@@ -25,7 +26,7 @@ var (
 
 func init() {
 	var outputFile string
-	flag.IntVar(&n, "n", DefaultN, "Length of side of chess board")
+	flag.IntVar(&n, "n", DefaultN, fmt.Sprintf("Length of side of chess board in [1,%d]", DefaultN))
 	flag.StringVar(&outputFile, "o", DefaultOutputFile, "Output file")
 	flag.BoolVar(&v, "v", false, "Display version")
 	flag.Usage = Usage
@@ -34,6 +35,9 @@ func init() {
 	if v {
 		printVersion()
 		os.Exit(0)
+	}
+	if n < 1 || n > DefaultN {
+		log.Fatalf("invalid n value, it should be in [1,%d]\n", DefaultN)
 	}
 	if outputFile != "" {
 		var err error
@@ -48,7 +52,8 @@ func init() {
 
 func main() {
 	defer out.Close()
-	fmt.Fprintf(out, "Hello there")
+	pos := make([]int, n)
+	snq.Snq(out, pos, 0)
 }
 
 // printVersion Prints the version command

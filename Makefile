@@ -1,7 +1,7 @@
-VERSION=0.0.0
+VERSION=1.0.0
 
 build:
-	go build -ldflags "-X 'main.Version=v$(VERSION)'"
+	go build -ldflags "-X 'main.Version=$(VERSION)'"
 
 clean:
 	go clean
