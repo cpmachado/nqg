@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"log"
 	"os"
 )
 
@@ -14,17 +15,19 @@ const (
 )
 
 // Version holds the version of the current software based on compilation
-var Version string = "unknown"
 
-func main() {
-	var (
-		n          int
-		outputFile string
-		v          bool
-	)
+var (
+	Version string = "unknown"
+	n       int
+	v       bool
+	out     *os.File
+)
+
+func init() {
+	var outputFile string
 	flag.IntVar(&n, "n", DefaultN, "Length of side of chess board")
 	flag.StringVar(&outputFile, "o", DefaultOutputFile, "Output file")
-	flag.BoolVar(&v, "v", false, "Display version, and exit if true")
+	flag.BoolVar(&v, "v", false, "Display version")
 	flag.Usage = Usage
 	flag.Parse()
 
@@ -32,7 +35,20 @@ func main() {
 		printVersion()
 		os.Exit(0)
 	}
-	fmt.Println(n, outputFile, v)
+	if outputFile != "" {
+		var err error
+		out, err = os.Create(outputFile)
+		if err != nil {
+			log.Fatal(err)
+		}
+	} else {
+		out = os.Stdout
+	}
+}
+
+func main() {
+	defer out.Close()
+	fmt.Fprintf(out, "Hello there")
 }
 
 // printVersion Prints the version command
