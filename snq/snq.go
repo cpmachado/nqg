@@ -14,7 +14,7 @@ func SNQ(w io.Writer, pos []int, k int) {
 	}
 
 	n := len(pos)
-	for i := 0; i < n; i++ {
+	for i := range n {
 		pos[k] = i
 		if isValidPosition(pos, k) {
 			SNQ(w, pos, k+1)
