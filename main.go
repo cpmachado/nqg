@@ -45,7 +45,7 @@ func main() {
 		out = os.Stdout
 	}
 
-	defer out.Close()
+	defer func() { _ = out.Close() }()
 	pos := make([]int, n)
 	snq.SNQ(out, pos, 0)
 }
@@ -62,7 +62,7 @@ func printVersion() {
 // Usage is a function to replace the default provided in the flag package
 func Usage() {
 	prog := os.Args[0]
-	fmt.Fprintf(flag.CommandLine.Output(), "%s is a program to solve the N queen puzzle\n", prog)
-	fmt.Fprintf(flag.CommandLine.Output(), "Usage of %s:\n", prog)
+	_, _ = fmt.Fprintf(flag.CommandLine.Output(), "%s is a program to solve the N queen puzzle\n", prog)
+	_, _ = fmt.Fprintf(flag.CommandLine.Output(), "Usage of %s:\n", prog)
 	flag.PrintDefaults()
 }
