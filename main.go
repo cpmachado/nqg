@@ -17,13 +17,10 @@ const (
 	DefaultOutputFile = ""
 )
 
-var (
-	n   int
-	v   bool
-	out *os.File
-)
-
-func init() {
+func main() {
+	var n int
+	var v bool
+	var out *os.File
 	var outputFile string
 	flag.IntVar(&n, "n", DefaultN, fmt.Sprintf("Length of side of chess board in [1,%d]", DefaultN))
 	flag.StringVar(&outputFile, "o", DefaultOutputFile, "Output file")
@@ -47,9 +44,7 @@ func init() {
 	} else {
 		out = os.Stdout
 	}
-}
 
-func main() {
 	defer out.Close()
 	pos := make([]int, n)
 	snq.SNQ(out, pos, 0)
