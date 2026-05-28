@@ -1,7 +1,5 @@
-VERSION=1.0.0
-
 build:
-	go build -ldflags "-X 'main.Version=$(VERSION)'"
+	go build
 
 clean:
 	go clean
@@ -13,6 +11,6 @@ run:
 	go run . $(OTHER)
 
 setup:
-	go install github.com/golangci/golangci-lint/cmd/golangci-lint@v1.63.4
+	go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
 
 .PHONY: build clean lint run setup

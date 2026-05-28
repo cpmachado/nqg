@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"runtime/debug"
 
 	"go.cpmachado.pt/nqg/snq"
 )
@@ -17,11 +18,9 @@ const (
 )
 
 var (
-	// Version holds the version of the current software based on compilation
-	Version string = "1.0.0"
-	n       int
-	v       bool
-	out     *os.File
+	n   int
+	v   bool
+	out *os.File
 )
 
 func init() {
@@ -58,7 +57,11 @@ func main() {
 
 // printVersion Prints the version command
 func printVersion() {
-	fmt.Printf("%s-%s Copyright (C) 2025 Carlos Pinto Machado\n", os.Args[0], Version)
+	version := "unknown"
+	if bi, ok := debug.ReadBuildInfo(); ok {
+		version = bi.Main.Version
+	}
+	fmt.Printf("%s-%s Copyright (C) 2025 Carlos Pinto Machado\n", os.Args[0], version)
 }
 
 // Usage is a function to replace the default provided in the flag package
