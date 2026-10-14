@@ -1,5 +1,7 @@
 # nqg
 
+[![build](https://github.com/cpmachado/nqg/actions/workflows/go.yml/badge.svg)](https://github.com/cpmachado/nqg/actions/workflows/go.yml)
+
 nqg is an implementation of [snq](https://github.com/cpmachado/snq) in Go.
 
 Basically it's a simple program to test approaches to the N Queen Problem.
