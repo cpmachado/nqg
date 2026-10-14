@@ -1,5 +1,5 @@
 build:
-	go build
+	go build ./cmd/nqg
 
 clean:
 	go clean
