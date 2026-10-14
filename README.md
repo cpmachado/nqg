@@ -11,7 +11,7 @@ Compliant clone of snq.
 ## Install
 
 ```shell
-go install go.cpmachado.pt/nqg@latest
+go install go.cpmachado.pt/nqg/cmd/nqg@latest
 ```
 
 ## Usage
