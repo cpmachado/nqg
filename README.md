@@ -1,6 +1,6 @@
 # nqg
 
-[![build](https://github.com/cpmachado/nqg/actions/workflows/go.yml/badge.svg)](https://github.com/cpmachado/nqg/actions/workflows/go.yml)
+[![build](https://github.com/cpmachado/nqg/actions/workflows/go.yml/badge.svg?branch=master)](https://github.com/cpmachado/nqg/actions/workflows/go.yml)
 
 nqg is an implementation of [snq](https://github.com/cpmachado/snq) in Go.
 
