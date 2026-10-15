@@ -5,12 +5,18 @@ clean:
 	go clean
 
 lint:
-	golangci-lint run .
+	golangci-lint run ./...
 
 run:
-	go run . $(OTHER)
+	go run ./cmd/nqg
 
-setup:
-	go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
+target:
+	mkdir -p target
 
-.PHONY: build clean lint run setup
+test: target
+	go test -cover -coverprofile=./target/cover.out -v ./...
+
+vulncheck:
+	govulncheck ./...
+
+.PHONY: build clean lint run test vulncheck

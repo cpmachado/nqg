@@ -9,14 +9,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - GitHub Actions workflow (`.github/workflows/go.yml`) running on every push, with jobs for build, `go mod tidy -diff`, `govulncheck`, `gofmt` format check and `go test`. (#4)
+- Added `test`, `vulncheck` scripts to Makefile
 
 ### Changed
 - Moved `main.go` to `cmd/nqg/main.go`; `make build` now builds `./cmd/nqg`.
 - Updated Go version to 1.27.2.
-- Updated the README and the build script.
+- Updated the README and the `build` and `run` script.
 
 ### Fixed
 - Typo in the README.
+
+## Removed
+
+- Removed `setup` script from Makefile
 
 ## [0.0.2] - 2026-05-28
 
