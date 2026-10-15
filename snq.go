@@ -1,4 +1,4 @@
-package snq
+package nqg
 
 import (
 	"fmt"

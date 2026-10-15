@@ -10,6 +10,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Updated Go version to 1.27.2.
+- Hoisted `snq` package to package root.
+
+## Removed
+
+- Removed `snq` package.
 
 ## [0.0.2] - 2026-05-28
 

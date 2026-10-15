@@ -7,7 +7,7 @@ import (
 	"os"
 	"runtime/debug"
 
-	"go.cpmachado.pt/nqg/snq"
+	"go.cpmachado.pt/nqg"
 )
 
 const (
@@ -47,7 +47,7 @@ func main() {
 
 	defer func() { _ = out.Close() }()
 	pos := make([]int, n)
-	snq.SNQ(out, pos, 0)
+	nqg.SNQ(out, pos, 0)
 }
 
 // printVersion Prints the version command
