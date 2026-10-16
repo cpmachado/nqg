@@ -1,9 +1,7 @@
 package nqg
 
 import (
-	"fmt"
 	"io"
-	"strings"
 )
 
 // SNQ implements the original Simple N-Queen puzzle solver
@@ -22,13 +20,6 @@ func SNQ(w io.Writer, pos []int, k int) {
 	}
 }
 
-func iabs(v int) int {
-	if v < 0 {
-		return -v
-	}
-	return v
-}
-
 func isValidPosition(pos []int, k int) bool {
 	p := pos[k]
 
@@ -39,14 +30,4 @@ func isValidPosition(pos []int, k int) bool {
 		}
 	}
 	return true
-}
-
-func printPosition(w io.Writer, pos []int) {
-	var sb strings.Builder
-
-	for _, p := range pos {
-		fmt.Fprintf(&sb, "%v", p)
-	}
-
-	fmt.Fprintf(w, "%s\n", sb.String())
 }
